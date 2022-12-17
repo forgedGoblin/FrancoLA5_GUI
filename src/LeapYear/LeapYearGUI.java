@@ -13,16 +13,20 @@ public LeapYearGUI() {
     btnCheckYear.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            int year = Integer.parseInt(tfYear.getText());
+            try {
+                int year = Integer.parseInt(tfYear.getText());
 
-            if(year % 400 == 0){
-                JOptionPane.showMessageDialog(btnCheckYear, "Leap year");
-            } else if(year % 100 == 0){
-                JOptionPane.showMessageDialog(btnCheckYear, "Not a leap year");
-            } else if(year  % 4 == 0){
-                JOptionPane.showMessageDialog(btnCheckYear, "Leap year");
-            } else{
-                JOptionPane.showMessageDialog(btnCheckYear, "Not a leap year");
+                if (year % 400 == 0) {
+                    JOptionPane.showMessageDialog(btnCheckYear, "Leap year");
+                } else if (year % 100 == 0) {
+                    JOptionPane.showMessageDialog(btnCheckYear, "Not a leap year");
+                } else if (year % 4 == 0) {
+                    JOptionPane.showMessageDialog(btnCheckYear, "Leap year");
+                } else {
+                    JOptionPane.showMessageDialog(btnCheckYear, "Not a leap year");
+                }
+            }catch(NumberFormatException i){
+                JOptionPane.showMessageDialog(btnCheckYear, "Enter a numeric value!","ERROR", JOptionPane.ERROR_MESSAGE);
             }
         }
     });
