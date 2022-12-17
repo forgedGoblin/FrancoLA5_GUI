@@ -3,8 +3,13 @@ package SimpleCalc;
 import javax.swing.*;
 
 public class SimpleCalcGUI {
-    private JPanel panel1;
-    private JTextField textField1;
-    private JComboBox comboBox1;
-    private JButton computeResultButton;
+    private JPanel pMain;
+    private JTextField tfFirstNo;
+    private JComboBox cbOperation;
+    private JButton btnCompute;
+    private JPanel pFirstNo;
+    private JPanel pSecondNo;
+    private JPanel pResult;
+    private JTextField tfSecondNo;
+    private JTextField tfResult;
 }
