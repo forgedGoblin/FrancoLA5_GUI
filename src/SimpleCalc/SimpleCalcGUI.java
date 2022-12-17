@@ -21,19 +21,30 @@ public class SimpleCalcGUI extends JFrame{
         btnCompute.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int num1 = Integer.parseInt(tfFirstNo.getText());
-                int num2 = Integer.parseInt(tfSecondNo.getText());
-                double result = 0;
-                String operation = cbOperation.getSelectedItem().toString();
 
-                if(operation == "+"){
-                    result = num1 + num2;
-                } else if(operation == "-"){
-                    result = num1 - num2;
-                } else if(operation == "*"){
-                    result = num1 * num2;
-                } else if(operation == "/"){
-                    result = num1 / num2;
+                try {
+                    int num1 = Integer.parseInt(tfFirstNo.getText());
+                    int num2 = Integer.parseInt(tfSecondNo.getText());
+                    int result = 0;
+                    String remain = "";
+                    String operation = cbOperation.getSelectedItem().toString();
+
+                    if (operation == "+") {
+                        result = num1 + num2;
+                    } else if (operation == "-") {
+                        result = num1 - num2;
+                    } else if (operation == "*") {
+                        result = num1 * num2;
+                    } else if (operation == "/") {
+                        result = num1 / num2;
+                        remain = " r." + Integer.toString(num1 % num2);
+                    }
+                    tfResult.setText(Integer.toString(result) + remain);
+                    tfResult.setEditable(false);
+                } catch(NumberFormatException ex){
+                JOptionPane.showMessageDialog(btnCompute, "Enter a numeric value!","ERROR", JOptionPane.ERROR_MESSAGE);
+                } catch(ArithmeticException ex){
+                    JOptionPane.showMessageDialog(btnCompute, "Enter a nonzero value!","ERROR", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -42,7 +53,7 @@ public class SimpleCalcGUI extends JFrame{
     public static void main(String[] args) {
         SimpleCalcGUI calc = new SimpleCalcGUI();
         calc.setContentPane(calc.pMain);
-        calc.setTitle("Leap Year");
+        calc.setTitle("Simple Calculator");
         calc.setBounds(400, 200, 500, 200);
 //        calc.setSize(300,400);
         calc.setVisible(true);
